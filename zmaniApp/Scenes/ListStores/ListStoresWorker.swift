@@ -16,7 +16,7 @@ class ListStoresWorker
 {
     func fetchStores(completionHandler: @escaping ([Store]) -> Void)
     {
-        let store = Store(name: "zara", image: "zara")
-        completionHandler([store])
+        let store = Store.DummyStores
+        completionHandler(store)
     }
 }

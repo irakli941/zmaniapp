@@ -12,5 +12,8 @@ import Foundation
 struct Seeds {
     struct Stores {
         static let AnyStore = Store(name: "any", image: "any")
+        static let DummyStores = [Store(name: "zara", image: "zara"),
+                                  Store(name: "zara", image: "zara")
+        ]
     }
 }
