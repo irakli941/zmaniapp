@@ -14,18 +14,23 @@ import UIKit
 
 enum ListStores
 {
-  // MARK: Use cases
-  
-  enum FetchStores
-  {
-    struct Request
+    enum FetchStores
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var fetchedStores: [Store]
+        }
+        struct ViewModel
+        {
+            struct DisplayedStore {
+                var title: String
+                var image: String
+            }
+            
+            var displayedStores: [DisplayedStore]
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

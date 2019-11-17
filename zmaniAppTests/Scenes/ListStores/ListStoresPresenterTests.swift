@@ -44,26 +44,46 @@ class ListStoresPresenterTests: XCTestCase
     class ListStoresDisplayLogicSpy: ListStoresDisplayLogic
     {
         var displayStoresCalled = false
-        
+        var viewModel: ListStores.FetchStores.ViewModel!
         func displayFetchedStores(viewModel: ListStores.FetchStores.ViewModel)
         {
             displayStoresCalled = true
+            self.viewModel = viewModel
         }
     }
     
     // MARK: Tests
     
-    func testPresentFetchedStoresShouldAskViewControllerToDisplayStores()
+    func testPresentFetchedStoresShouldAskViewControllerToDisplayFetchedStores()
     {
         // Given
         let spy = ListStoresDisplayLogicSpy()
         sut.viewController = spy
-        let response = ListStores.FetchStores.Response()
+        let response = ListStores.FetchStores.Response(fetchedStores: [Seeds.Stores.AnyStore])
         
         // When
         sut.presentFetchedStores(response: response)
         
         // Then
         XCTAssertTrue(spy.displayStoresCalled, "presentSomething(response:) should ask the view controller to display the result")
+    }
+    
+    func testPresentFetchedStoresShouldFormatFetchedStoresForDisplay()
+    {
+        // Given
+        let spy = ListStoresDisplayLogicSpy()
+        let seedStore = Seeds.Stores.AnyStore
+        let response = ListStores.FetchStores.Response(fetchedStores: [seedStore])
+        sut.viewController = spy
+        
+        // When
+        sut.presentFetchedStores(response: response)
+        
+        // Then
+        
+        for displayedStore in spy.viewModel.displayedStores {
+            XCTAssertEqual(displayedStore.image, "any", "presenting fetched stores should properly format image")
+            XCTAssertEqual(displayedStore.title, "any", "presenting fetched stores should properly format image")
+        }   
     }
 }

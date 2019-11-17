@@ -24,7 +24,7 @@ class ListStoresViewController: UIViewController, ListStoresDisplayLogic
     
     var interactor: ListStoresBusinessLogic?
     var router: (NSObjectProtocol & ListStoresRoutingLogic & ListStoresDataPassing)?
-    private var fetchedStores: [Store]?
+    private var fetchedStores: [ListStores.FetchStores.ViewModel.DisplayedStore]?
     
     // MARK: Object lifecycle
     
@@ -75,6 +75,10 @@ class ListStoresViewController: UIViewController, ListStoresDisplayLogic
         super.viewDidLoad()
         storesCollectionView!.dataSource = self
         storesCollectionView!.delegate = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchStores()
     }
     
@@ -87,7 +91,8 @@ class ListStoresViewController: UIViewController, ListStoresDisplayLogic
     
     func displayFetchedStores(viewModel: ListStores.FetchStores.ViewModel)
     {
-        //nameTextField.text = viewModel.name
+        fetchedStores = viewModel.displayedStores
+        storesCollectionView.reloadData()
     }
     
 }
@@ -99,6 +104,7 @@ extension ListStoresViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListStoresCell", for: indexPath) as! ListStoresCollectionViewCell
+        cell.configure(with: fetchedStores![indexPath.row])
         return cell
     }
 }

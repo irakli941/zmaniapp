@@ -20,10 +20,10 @@ class ListStoresCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    public func configure(with store: Store)
+    public func configure(with store: ListStores.FetchStores.ViewModel.DisplayedStore)
     {
         imageView.image = UIImage.init(named: store.image)
-        title.text = store.name
+        title.text = store.title
     }
     
 }

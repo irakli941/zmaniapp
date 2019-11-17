@@ -21,12 +21,21 @@ class ListStoresPresenter: ListStoresPresentationLogic
 {
     weak var viewController: ListStoresDisplayLogic?
     
-    // MARK: Do something
     
     func presentFetchedStores(response: ListStores.FetchStores.Response)
     {
-        let viewModel = ListStores.FetchStores.ViewModel()
+        
+        var displayedStores: [ListStores.FetchStores.ViewModel.DisplayedStore] = []
+        for store in response.fetchedStores {
+            let title = store.name
+            let image = store.image
+            let displayedStore = ListStores.FetchStores.ViewModel.DisplayedStore(title: title, image: image)
+            displayedStores.append(displayedStore)
+        }
+        let viewModel = ListStores.FetchStores.ViewModel(displayedStores: displayedStores)
         viewController?.displayFetchedStores(viewModel: viewModel)
     }
+    
+    
     
 }

@@ -30,7 +30,7 @@ class ListStoresInteractor: ListStoresBusinessLogic, ListStoresDataStore
     func fetchStores(request: ListStores.FetchStores.Request)
     {
         worker.fetchStores() { [weak self] (stores) in
-            let response = ListStores.FetchStores.Response()
+            let response = ListStores.FetchStores.Response(fetchedStores: stores)
             self?.presenter?.presentFetchedStores(response: response)
         }
     }
