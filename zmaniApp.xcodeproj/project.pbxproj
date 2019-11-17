@@ -14,7 +14,7 @@
 		8FABE427237E7F0900B94AB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FABE425237E7F0900B94AB5 /* Main.storyboard */; };
 		8FABE429237E7F0A00B94AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FABE428237E7F0A00B94AB5 /* Assets.xcassets */; };
 		8FABE42C237E7F0A00B94AB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FABE42A237E7F0A00B94AB5 /* LaunchScreen.storyboard */; };
-		8FABE437237E7F0B00B94AB5 /* DonnaAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE436237E7F0B00B94AB5 /* DonnaAppTests.swift */; };
+		8FABE437237E7F0B00B94AB5 /* zmaniAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE436237E7F0B00B94AB5 /* zmaniAppTests.swift */; };
 		8FABE446237E841C00B94AB5 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE442237E841C00B94AB5 /* WelcomeViewControllerTests.swift */; };
 		8FABE447237E841C00B94AB5 /* WelcomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE443237E841C00B94AB5 /* WelcomeInteractorTests.swift */; };
 		8FABE448237E841C00B94AB5 /* WelcomeWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE444237E841C00B94AB5 /* WelcomeWorkerTests.swift */; };
@@ -59,7 +59,7 @@
 		8FABE42B237E7F0A00B94AB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FABE42D237E7F0A00B94AB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FABE432237E7F0B00B94AB5 /* zmaniAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmaniAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FABE436237E7F0B00B94AB5 /* DonnaAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonnaAppTests.swift; sourceTree = "<group>"; };
+		8FABE436237E7F0B00B94AB5 /* zmaniAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmaniAppTests.swift; sourceTree = "<group>"; };
 		8FABE438237E7F0B00B94AB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FABE442237E841C00B94AB5 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
 		8FABE443237E841C00B94AB5 /* WelcomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractorTests.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8FABE44B237E843F00B94AB5 /* Scenes */,
-				8FABE436237E7F0B00B94AB5 /* DonnaAppTests.swift */,
+				8FABE436237E7F0B00B94AB5 /* zmaniAppTests.swift */,
 				8FABE438237E7F0B00B94AB5 /* Info.plist */,
 			);
 			path = zmaniAppTests;
@@ -360,7 +360,7 @@
 				8FABE449237E841C00B94AB5 /* WelcomePresenterTests.swift in Sources */,
 				8FABE447237E841C00B94AB5 /* WelcomeInteractorTests.swift in Sources */,
 				8FABE446237E841C00B94AB5 /* WelcomeViewControllerTests.swift in Sources */,
-				8FABE437237E7F0B00B94AB5 /* DonnaAppTests.swift in Sources */,
+				8FABE437237E7F0B00B94AB5 /* zmaniAppTests.swift in Sources */,
 				8FABE46E237EED3100B94AB5 /* ListStoresPresenterTests.swift in Sources */,
 				8FABE46D237EED3100B94AB5 /* ListStoresWorkerTests.swift in Sources */,
 			);
