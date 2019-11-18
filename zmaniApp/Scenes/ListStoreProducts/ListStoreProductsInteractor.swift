@@ -14,28 +14,27 @@ import UIKit
 
 protocol ListStoreProductsBusinessLogic
 {
-  func doSomething(request: ListStoreProducts.Something.Request)
+    func fetchStoreProducts(request: ListStoreProducts.FetchStoreProducts.Request)
 }
 
 protocol ListStoreProductsDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class ListStoreProductsInteractor: ListStoreProductsBusinessLogic, ListStoreProductsDataStore
 {
-  var presenter: ListStoreProductsPresentationLogic?
-  var worker: ListStoreProductsWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: ListStoreProducts.Something.Request)
-  {
-    worker = ListStoreProductsWorker()
-    worker?.doSomeWork()
+    var presenter: ListStoreProductsPresentationLogic?
+    var worker = ListStoreProductsWorker()
+    //var name: String = ""
     
-    let response = ListStoreProducts.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func fetchStoreProducts(request: ListStoreProducts.FetchStoreProducts.Request)
+    {
+        worker.fetchProducts(forStore: request.store) { [weak self] (products) in
+            let response = ListStoreProducts.FetchStoreProducts.Response(products: products)
+            self?.presenter?.presentProducts(response: response)
+        }
+    }
 }

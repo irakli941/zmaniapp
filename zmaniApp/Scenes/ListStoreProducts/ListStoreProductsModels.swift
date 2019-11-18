@@ -14,18 +14,37 @@ import UIKit
 
 enum ListStoreProducts
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum FetchStoreProducts
     {
+        struct Request
+        {
+            var store: String
+        }
+        struct Response
+        {
+            var products: [StoreProduct]
+        }
+        struct ViewModel
+        {
+            struct DisplayedStoreProduct {
+                var name: String
+                var image: String
+                var price: Double
+                var size: StoreProduct.Size
+                var Sex: StoreProduct.Sex
+                var discountedPrice: Double?
+                var discount: Int?
+                var category: [StoreProduct.Category]
+            }
+            
+            var displayedStoreProducts: [DisplayedStoreProduct]
+            
+            static let DummyDisplayedStoreProducts = [
+                DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
+                DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt])
+            ]
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

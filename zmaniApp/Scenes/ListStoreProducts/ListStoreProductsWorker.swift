@@ -14,7 +14,11 @@ import UIKit
 
 class ListStoreProductsWorker
 {
-  func doSomeWork()
-  {
-  }
+  
+    func fetchProducts(forStore store: String, completionHandler:@escaping([StoreProduct]) -> Void)
+    {
+        let storeProducts = StoreProduct.DummyStoreProducts
+        completionHandler(storeProducts)
+    }
+    
 }

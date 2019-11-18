@@ -14,18 +14,18 @@ import UIKit
 
 protocol ListStoreProductsPresentationLogic
 {
-  func presentSomething(response: ListStoreProducts.Something.Response)
+    func presentProducts(response: ListStoreProducts.FetchStoreProducts.Response)
 }
 
 class ListStoreProductsPresenter: ListStoreProductsPresentationLogic
 {
-  weak var viewController: ListStoreProductsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: ListStoreProducts.Something.Response)
-  {
-    let viewModel = ListStoreProducts.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: ListStoreProductsDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentProducts(response: ListStoreProducts.FetchStoreProducts.Response)
+    {
+        let viewModel = ListStoreProducts.FetchStoreProducts.ViewModel(displayedStoreProducts: ListStoreProducts.FetchStoreProducts.ViewModel.DummyDisplayedStoreProducts)
+        viewController?.displayProducts(viewModel: viewModel)
+    }
 }

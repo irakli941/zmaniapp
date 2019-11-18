@@ -15,55 +15,94 @@ import XCTest
 
 class ListStoreProductsInteractorTests: XCTestCase
 {
-  // MARK: Subject under test
-  
-  var sut: ListStoreProductsInteractor!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setupListStoreProductsInteractor()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setupListStoreProductsInteractor()
-  {
-    sut = ListStoreProductsInteractor()
-  }
-  
-  // MARK: Test doubles
-  
-  class ListStoreProductsPresentationLogicSpy: ListStoreProductsPresentationLogic
-  {
-    var presentSomethingCalled = false
+    // MARK: Subject under test
     
-    func presentSomething(response: ListStoreProducts.Something.Response)
+    var sut: ListStoreProductsInteractor!
+    
+    // MARK: Test lifecycle
+    
+    override func setUp()
     {
-      presentSomethingCalled = true
+        super.setUp()
+        setupListStoreProductsInteractor()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testDoSomething()
-  {
-    // Given
-    let spy = ListStoreProductsPresentationLogicSpy()
-    sut.presenter = spy
-    let request = ListStoreProducts.Something.Request()
     
-    // When
-    sut.doSomething(request: request)
+    override func tearDown()
+    {
+        super.tearDown()
+    }
     
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-  }
+    // MARK: Test setup
+    
+    func setupListStoreProductsInteractor()
+    {
+        sut = ListStoreProductsInteractor()
+    }
+    
+    // MARK: Test doubles
+    
+    class ListStoreProductsPresentationLogicSpy: ListStoreProductsPresentationLogic
+    {
+        func presentSomething(response: ListStoreProducts.FetchStoreProducts.Response) {
+            
+        }
+        
+        var presentProductsCalled = false
+        
+        func presentProducts(response: ListStoreProducts.FetchStoreProducts.Response)
+        {
+            presentProductsCalled = true
+        }
+    }
+    
+    class ListStoreProductsWorkerSpy: ListStoreProductsWorker
+    {
+        var fetchProductsCalled = false
+        
+        override func fetchProducts(forStore store:String, completionHandler completioHandler: @escaping([StoreProduct]) -> Void)
+        {
+            fetchProductsCalled = true
+        }
+    }
+    
+    // MARK: Tests
+    
+    func testFetchProductsShouldAskWorkerToFetchProducts()
+    {
+        // Given
+        let workerSpy = ListStoreProductsWorkerSpy()
+        sut.worker = workerSpy
+        let request = ListStoreProducts.FetchStoreProducts.Request(store: "zara")
+        
+        // When
+        sut.fetchStoreProducts(request: request)
+        
+        // Then
+        XCTAssertTrue(workerSpy.fetchProductsCalled, "fetchProducts(request:) should ask worker to fetch products.")
+    }
+    
+    func testFetchProductsShouldAskPresenterToFormatProducts()
+    {
+        // Given
+        let spy = ListStoreProductsPresentationLogicSpy()
+        sut.presenter = spy
+        let storeProducts = Seeds.DummyStoreProducts
+        let response = ListStoreProducts.FetchStoreProducts.Response(products: storeProducts)
+        // When
+        spy.presentProducts(response: response)
+        
+        // Then
+        XCTAssertTrue(spy.presentProductsCalled, "fetchProducts(request:) should ask presenter to format result")
+    }
+    
+    //    func testFetchProductsShouldPresentFetchedProducts()
+    //    {
+    //        // Given
+    //        let presentationSpy = ListStoreProductsPresentationLogicSpy()
+    //        sut.presenter = presentationSpy
+    //        let request =
+    //
+    //        // When
+    //        sut.fetchProducts(request: request)
+    //    }
 }
