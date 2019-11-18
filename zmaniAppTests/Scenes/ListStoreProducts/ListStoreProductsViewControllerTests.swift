@@ -61,6 +61,7 @@ class ListStoreProductsViewControllerTests: XCTestCase
         }
     }
     
+    
     class ListStoreProductsTableViewSpy: UITableView
     {
         var reloadDataCalled = false
@@ -90,7 +91,7 @@ class ListStoreProductsViewControllerTests: XCTestCase
         // Given
         let tableView = ListStoreProductsTableViewSpy()
         sut.tableView = tableView
-        let viewModel = ListStoreProducts.FetchStoreProducts.ViewModel(displayedStoreProducts: ListStoreProducts.FetchStoreProducts.ViewModel.DummyDisplayedStoreProducts)
+        let viewModel = ListStoreProducts.FetchStoreProducts.ViewModel(displayedStoreProducts: Seeds.DummyDisplayedStoreProducts)
         
         // When
         sut.displayProducts(viewModel: viewModel)
@@ -99,11 +100,28 @@ class ListStoreProductsViewControllerTests: XCTestCase
         XCTAssertTrue(tableView.reloadDataCalled, "displayStoreProducts() should reloadData")
     }
     
+    func testShouldConfigureTableViewCellToDisplayStore()
+    {
+        // Given
+        loadView()
+        let indexPath = IndexPath(item: 0, section: 0)
+        
+        // When
+        sut.view.layoutIfNeeded() //CELL IS NIL WITHOUT THIS
+        sut.fetchedProducts = Seeds.DummyDisplayedStoreProducts
+        let cell = sut.tableView.cellForRow(at: indexPath) as! ListStoreProductCell
+        
+        // Then
+        // ListStoreProducts.FetchStoreProducts.ViewModel.DisplayedStoreProduct(name: "T-Shirt", image: "tshirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
+        XCTAssertEqual(cell.title.text, "T-Shirt", "A properly configured cell should display product name")
+        XCTAssertNotNil(cell.productImageView?.image, "A properly configured cell should display product image")
+    }
+    
     func testTableViewRowsShouldEqualToNumberOfFetchedStoreProducts()
     {
         // Given
         loadView()
-        sut.fetchedProducts = ListStoreProducts.FetchStoreProducts.ViewModel.DummyDisplayedStoreProducts
+        sut.fetchedProducts = Seeds.DummyDisplayedStoreProducts
         
         // When
         let numberOfRows = sut.tableView.numberOfRows(inSection: 0)
@@ -114,3 +132,4 @@ class ListStoreProductsViewControllerTests: XCTestCase
     }
     
 }
+

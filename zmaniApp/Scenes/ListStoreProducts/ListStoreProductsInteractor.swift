@@ -26,9 +26,6 @@ class ListStoreProductsInteractor: ListStoreProductsBusinessLogic, ListStoreProd
 {
     var presenter: ListStoreProductsPresentationLogic?
     var worker = ListStoreProductsWorker()
-    //var name: String = ""
-    
-    // MARK: Do something
     
     func fetchStoreProducts(request: ListStoreProducts.FetchStoreProducts.Request)
     {

@@ -25,7 +25,12 @@ class ListStoreProductsPresenter: ListStoreProductsPresentationLogic
     
     func presentProducts(response: ListStoreProducts.FetchStoreProducts.Response)
     {
-        let viewModel = ListStoreProducts.FetchStoreProducts.ViewModel(displayedStoreProducts: ListStoreProducts.FetchStoreProducts.ViewModel.DummyDisplayedStoreProducts)
+        var displayedStoreProducts: [ListStoreProducts.FetchStoreProducts.ViewModel.DisplayedStoreProduct] = []
+        for product in response.products {
+            let displayProduct = ListStoreProducts.FetchStoreProducts.ViewModel.DisplayedStoreProduct(name: product.name, image: product.image, price: product.price, size: product.size, Sex: product.Sex, discountedPrice: product.discountedPrice, discount: product.discount, category: product.category)
+            displayedStoreProducts.append(displayProduct)
+        }
+        let viewModel = ListStoreProducts.FetchStoreProducts.ViewModel(displayedStoreProducts: displayedStoreProducts)
         viewController?.displayProducts(viewModel: viewModel)
     }
 }

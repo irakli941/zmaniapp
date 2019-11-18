@@ -43,9 +43,4 @@ struct StoreProduct {
     var discount: Int?
     var category: [Category]
     
-    static let DummyStoreProducts = [
-        StoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
-        StoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 100, discount: 70, category: [.Shirt]),
-        StoreProduct(name: "T-Shirt", image: "shirt", price: 30, size: .M, Sex: .M, discountedPrice: 15, discount: 50, category: [.Shirt])
-    ]
 }

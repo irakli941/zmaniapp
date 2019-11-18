@@ -157,6 +157,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="price" destination="btm-oD-opb" id="hcz-Go-U21"/>
+                                            <outlet property="productImageView" destination="jAf-dd-Cmg" id="L9s-e6-2xH"/>
                                             <outlet property="size" destination="4kB-QM-yk6" id="Q1z-Jd-qiI"/>
                                             <outlet property="title" destination="ZTm-DG-7v5" id="OZv-rj-x8A"/>
                                         </connections>

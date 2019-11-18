@@ -76,10 +76,6 @@ class ListStoreProductsViewController: UIViewController, ListStoreProductsDispla
         fetchStoreProducts(forStore: "zara")
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
     func fetchStoreProducts(forStore store:String)
     {
         let request = ListStoreProducts.FetchStoreProducts.Request(store: store)
@@ -89,7 +85,6 @@ class ListStoreProductsViewController: UIViewController, ListStoreProductsDispla
     
     func displayProducts(viewModel: ListStoreProducts.FetchStoreProducts.ViewModel)
     {
-        //nameTextField.text = viewModel.name
         fetchedProducts = viewModel.displayedStoreProducts
         tableView.reloadData()
     }
@@ -106,6 +101,7 @@ extension ListStoreProductsViewController: UITableViewDataSource {
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListStoreProductsCell") as! ListStoreProductCell
+        cell.configure(withProduct: fetchedProducts![indexPath.row])
         return cell
     }
     

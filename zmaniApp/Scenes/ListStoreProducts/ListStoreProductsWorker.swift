@@ -12,12 +12,17 @@
 
 import UIKit
 
+
 class ListStoreProductsWorker
 {
-  
+    
     func fetchProducts(forStore store: String, completionHandler:@escaping([StoreProduct]) -> Void)
     {
-        let storeProducts = StoreProduct.DummyStoreProducts
+        let storeProducts = [
+            StoreProduct(name: "T-Shirt", image: "tshirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
+            StoreProduct(name: "T-Shirt", image: "tshirt", price: 100, size: .M, Sex: .M, discountedPrice: 100, discount: 70, category: [.Shirt]),
+            StoreProduct(name: "T-Shirt", image: "tshirt", price: 30, size: .M, Sex: .M, discountedPrice: 15, discount: 50, category: [.Shirt])
+        ]
         completionHandler(storeProducts)
     }
     

@@ -114,7 +114,7 @@ class ListStoresViewControllerTests: XCTestCase
         
     }
     
-    func testShouldConfigureTableViewCellToDisplayOrder()
+    func testShouldConfigureTableViewCellToDisplayStore()
     {
         // Given
         loadView()
@@ -122,8 +122,6 @@ class ListStoresViewControllerTests: XCTestCase
         // When
         sut.view.layoutIfNeeded() //CELL IS NIL WITHOUT THIS
         let indexPath = IndexPath(row: 0, section: 0)
-        
-        
         let cell = sut.storesCollectionView.cellForItem(at: indexPath) as! ListStoresCollectionViewCell
         
         // Then

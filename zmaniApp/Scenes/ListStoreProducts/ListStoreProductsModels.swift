@@ -41,10 +41,6 @@ enum ListStoreProducts
             
             var displayedStoreProducts: [DisplayedStoreProduct]
             
-            static let DummyDisplayedStoreProducts = [
-                DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
-                DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt])
-            ]
         }
     }
 }
