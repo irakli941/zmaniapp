@@ -130,6 +130,5 @@ class ListStoreProductsViewControllerTests: XCTestCase
         // Then
         XCTAssertEqual(numberOfRows, numberOfFetchedProducts, "number of rows in section 0 should be equal to fetched products")
     }
-    
 }
 

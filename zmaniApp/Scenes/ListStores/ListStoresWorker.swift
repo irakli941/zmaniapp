@@ -16,7 +16,16 @@ class ListStoresWorker
 {
     func fetchStores(completionHandler: @escaping ([Store]) -> Void)
     {
-        let store = Store.DummyStores
+        let store = [
+            Store(name: "ZARA", image: "zara"),
+            Store(name: "adidas", image: "adidas"),
+            Store(name: "H&M", image: "hm"),
+            Store(name: "Lacoste", image: "lacoste"),
+            Store(name: "Levis", image: "levis"),
+            Store(name: "Nike", image: "nike"),
+            Store(name: "Tom Ford", image: "tomford"),
+            Store(name: "ZOMA", image: "zoma"),
+        ]
         completionHandler(store)
     }
 }
