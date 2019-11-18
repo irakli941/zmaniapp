@@ -47,8 +47,9 @@ class ListStoresViewControllerTests: XCTestCase
     func loadView()
     {
         window.addSubview(sut.view)
-        RunLoop.current.run(until: Date())
+        sut.preloadView()
     }
+    
     
     // MARK: Test doubles
     
@@ -59,7 +60,6 @@ class ListStoresViewControllerTests: XCTestCase
         func fetchStores(request: ListStores.FetchStores.Request) {
             fetchStoresCalled = true
         }
-        
     }
     
     class CollectionViewSpy: UICollectionView
@@ -69,9 +69,8 @@ class ListStoresViewControllerTests: XCTestCase
         override func reloadData() {
             reloadDataCalled = true
         }
-        
     }
-        
+    
     // MARK: Test
     func testShouldFetchStoresWhenViewWillAppear()
     {
@@ -86,35 +85,73 @@ class ListStoresViewControllerTests: XCTestCase
         XCTAssertTrue(spy.fetchStoresCalled, "viewWillAppear should call fetchStores:")
     }
     
-    func testFetchStoresShouldReloadData()
+    func testCollectionViewNumberOfRowsShouldEqualToFetchedStores()
     {
-     
         // Given
-        let interactor = ListStoresBusinessLogicSpy()
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: 100, height: 100)
-        let collectionViewSpy = CollectionViewSpy(frame: sut.view.frame, collectionViewLayout:  collectionViewLayout)
-        sut.storesCollectionView = collectionViewSpy
-        sut.interactor = interactor
+        let spy = ListStoresBusinessLogicSpy()
+        sut.interactor = spy
+        sut.fetchedStores = Seeds.DisplayedStores.DummyStores
         
         // When
         loadView()
         
+        //Then
+        XCTAssertEqual(sut.storesCollectionView.numberOfItems(inSection: 0), sut.fetchedStores!.count, "collectionView rows and fetchedStores count should equal")
+    }
+    
+    func testFetchStoresShouldReloadData()
+    {
+        // Given
+        let viewModel = ListStores.FetchStores.ViewModel(displayedStores: Seeds.DisplayedStores.DummyStores)
+        let collectionViewSpy = getConfiguredCollectionViewSpy()
+        sut.storesCollectionView = collectionViewSpy
+        
+        // When
+        sut.displayFetchedStores(viewModel: viewModel)
+        
         // Then
-    //TODO TEST VIEWCONTROLLER
-//        XCTAssertTrue(collectionViewSpy.reloadDataCalled, "fetchStores: should reload data")
+        XCTAssertTrue(collectionViewSpy.reloadDataCalled, "fetchStores: should reload data")
         
     }
     
-//    func testNumberOfRowsShouldBeEqualToNumberOfFetchedStores()
-//    {
-//        // Given
-//        let spy = ListStoresBusinessLogicSpy()
-//        sut.interactor = spy
-//        sut.storesCollectionView.
-////        spy.stores
-//
-//    }
+    func testShouldConfigureTableViewCellToDisplayOrder()
+    {
+        // Given
+        loadView()
+        sut.fetchedStores = Seeds.DisplayedStores.DummyStores
+        // When
+        sut.view.layoutIfNeeded() //CELL IS NIL WITHOUT THIS
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        
+        let cell = sut.storesCollectionView.cellForItem(at: indexPath) as! ListStoresCollectionViewCell
+        
+        // Then
+        XCTAssertEqual(cell.title.text!, "Nike", "A properly configured cell should display the store name")
+        XCTAssertNotNil(cell.imageView.image, "A properly configured cell should display the store image")
+    }
+    
+    func testNumberOfRowsShouldBeEqualToNumberOfFetchedStores()
+    {
+        // Given
+        loadView()
+        sut.fetchedStores = Seeds.DisplayedStores.DummyStores
+        
+        // When
+        let numberOfRows = sut.storesCollectionView.numberOfItems(inSection: 0)
+        let numberOfFetchedStores = sut.fetchedStores?.count
+        
+        XCTAssertEqual(numberOfRows, numberOfFetchedStores, "number of rows in section 0 should be equal to fetched stores")
+        
+    }
+    
+    private func getConfiguredCollectionViewSpy() -> CollectionViewSpy
+    {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.itemSize = CGSize(width: 100, height: 100)
+        return  CollectionViewSpy(frame: sut.view.frame, collectionViewLayout:  collectionViewLayout)
+        
+    }
     
 }
 

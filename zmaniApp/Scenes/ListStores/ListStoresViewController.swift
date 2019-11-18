@@ -24,7 +24,7 @@ class ListStoresViewController: UIViewController, ListStoresDisplayLogic
     
     var interactor: ListStoresBusinessLogic?
     var router: (NSObjectProtocol & ListStoresRoutingLogic & ListStoresDataPassing)?
-    private var fetchedStores: [ListStores.FetchStores.ViewModel.DisplayedStore]?
+    var fetchedStores: [ListStores.FetchStores.ViewModel.DisplayedStore]?
     
     // MARK: Object lifecycle
     
@@ -75,11 +75,11 @@ class ListStoresViewController: UIViewController, ListStoresDisplayLogic
         super.viewDidLoad()
         storesCollectionView!.dataSource = self
         storesCollectionView!.delegate = self
-        
+        fetchStores()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchStores()
+//        fetchStores()
     }
     
     
@@ -108,3 +108,10 @@ extension ListStoresViewController: UICollectionViewDataSource, UICollectionView
         return cell
     }
 }
+
+extension ListStoresViewController {
+    func preloadView() {
+        let _ = view
+    }
+}
+

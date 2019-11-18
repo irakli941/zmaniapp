@@ -16,4 +16,11 @@ struct Seeds {
                                   Store(name: "zara", image: "zara")
         ]
     }
+    
+    struct DisplayedStores {
+        static let AnyStore = ListStores.FetchStores.ViewModel.DisplayedStore(title: "ZARA", image: "zara")
+        static let DummyStores = [ ListStores.FetchStores.ViewModel.DisplayedStore(title: "Nike", image: "nike"),
+                                   ListStores.FetchStores.ViewModel.DisplayedStore(title: "Adidas", image: "adidas"),
+        ]
+    }
 }
