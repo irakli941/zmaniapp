@@ -80,8 +80,14 @@ class ListStoreProductsPresenterTests: XCTestCase
         sut.presentProducts(response: response)
         
         // Then
-//        DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
+        //        DisplayedStoreProduct(name: "T-Shirt", image: "shirt", price: 100, size: .M, Sex: .M, discountedPrice: 50, discount: 50, category: [.Shirt]),
         XCTAssertEqual(spy.viewModel.displayedStoreProducts.first?.name, "T-Shirt", "presenting fetched store products should properly format product name")
         //todo
+    }
+}
+
+extension ListStoreProductsViewController {
+    func preloadView() {
+        let _ = view
     }
 }

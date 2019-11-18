@@ -17,8 +17,8 @@
 		8F1E2FD22382C0DA0092BB76 /* ListStoreProductsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FCC2382C0DA0092BB76 /* ListStoreProductsInteractor.swift */; };
 		8F1E2FD82382C0F70092BB76 /* ListStoreProductsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FD42382C0F70092BB76 /* ListStoreProductsViewControllerTests.swift */; };
 		8F1E2FD92382C0F70092BB76 /* ListStoreProductsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FD52382C0F70092BB76 /* ListStoreProductsInteractorTests.swift */; };
-		8F1E2FDA2382C0F70092BB76 /* ListStoreProductsWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FD62382C0F70092BB76 /* ListStoreProductsWorkerTests.swift */; };
 		8F1E2FDB2382C0F70092BB76 /* ListStoreProductsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FD72382C0F70092BB76 /* ListStoreProductsPresenterTests.swift */; };
+		8F1E2FDE2382E00D0092BB76 /* ListStoreProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E2FDD2382E00D0092BB76 /* ListStoreProductCell.swift */; };
 		8F69A1092381342700A18A1F /* ListStoresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F69A1082381342700A18A1F /* ListStoresCollectionViewCell.swift */; };
 		8FABE420237E7F0900B94AB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE41F237E7F0900B94AB5 /* AppDelegate.swift */; };
 		8FABE422237E7F0900B94AB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE421237E7F0900B94AB5 /* SceneDelegate.swift */; };
@@ -45,7 +45,6 @@
 		8FABE465237EEB3A00B94AB5 /* ListStoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE45F237EEB3A00B94AB5 /* ListStoresInteractor.swift */; };
 		8FABE46B237EED3100B94AB5 /* ListStoresViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE467237EED3100B94AB5 /* ListStoresViewControllerTests.swift */; };
 		8FABE46C237EED3100B94AB5 /* ListStoresInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE468237EED3100B94AB5 /* ListStoresInteractorTests.swift */; };
-		8FABE46D237EED3100B94AB5 /* ListStoresWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE469237EED3100B94AB5 /* ListStoresWorkerTests.swift */; };
 		8FABE46E237EED3100B94AB5 /* ListStoresPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE46A237EED3100B94AB5 /* ListStoresPresenterTests.swift */; };
 		8FABE47D237FDD4800B94AB5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABE47C237FDD4800B94AB5 /* Store.swift */; };
 /* End PBXBuildFile section */
@@ -71,8 +70,8 @@
 		8F1E2FCC2382C0DA0092BB76 /* ListStoreProductsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductsInteractor.swift; sourceTree = "<group>"; };
 		8F1E2FD42382C0F70092BB76 /* ListStoreProductsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductsViewControllerTests.swift; sourceTree = "<group>"; };
 		8F1E2FD52382C0F70092BB76 /* ListStoreProductsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductsInteractorTests.swift; sourceTree = "<group>"; };
-		8F1E2FD62382C0F70092BB76 /* ListStoreProductsWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductsWorkerTests.swift; sourceTree = "<group>"; };
 		8F1E2FD72382C0F70092BB76 /* ListStoreProductsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductsPresenterTests.swift; sourceTree = "<group>"; };
+		8F1E2FDD2382E00D0092BB76 /* ListStoreProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoreProductCell.swift; sourceTree = "<group>"; };
 		8F69A1082381342700A18A1F /* ListStoresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresCollectionViewCell.swift; sourceTree = "<group>"; };
 		8FABE41C237E7F0900B94AB5 /* zmani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zmani.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FABE41F237E7F0900B94AB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 		8FABE45F237EEB3A00B94AB5 /* ListStoresInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresInteractor.swift; sourceTree = "<group>"; };
 		8FABE467237EED3100B94AB5 /* ListStoresViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresViewControllerTests.swift; sourceTree = "<group>"; };
 		8FABE468237EED3100B94AB5 /* ListStoresInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresInteractorTests.swift; sourceTree = "<group>"; };
-		8FABE469237EED3100B94AB5 /* ListStoresWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresWorkerTests.swift; sourceTree = "<group>"; };
 		8FABE46A237EED3100B94AB5 /* ListStoresPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStoresPresenterTests.swift; sourceTree = "<group>"; };
 		8FABE47C237FDD4800B94AB5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +127,7 @@
 		8F1E2FC62382C0BB0092BB76 /* ListStoreProducts */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E2FDC2382DFDF0092BB76 /* Views */,
 				8F1E2FC72382C0DA0092BB76 /* ListStoreProductsPresenter.swift */,
 				8F1E2FC82382C0DA0092BB76 /* ListStoreProductsWorker.swift */,
 				8F1E2FC92382C0DA0092BB76 /* ListStoreProductsRouter.swift */,
@@ -144,10 +143,17 @@
 			children = (
 				8F1E2FD42382C0F70092BB76 /* ListStoreProductsViewControllerTests.swift */,
 				8F1E2FD52382C0F70092BB76 /* ListStoreProductsInteractorTests.swift */,
-				8F1E2FD62382C0F70092BB76 /* ListStoreProductsWorkerTests.swift */,
 				8F1E2FD72382C0F70092BB76 /* ListStoreProductsPresenterTests.swift */,
 			);
 			path = ListStoreProducts;
+			sourceTree = "<group>";
+		};
+		8F1E2FDC2382DFDF0092BB76 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E2FDD2382E00D0092BB76 /* ListStoreProductCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8F69A1072381340400A18A1F /* Views */ = {
@@ -266,7 +272,6 @@
 			children = (
 				8FABE467237EED3100B94AB5 /* ListStoresViewControllerTests.swift */,
 				8FABE468237EED3100B94AB5 /* ListStoresInteractorTests.swift */,
-				8FABE469237EED3100B94AB5 /* ListStoresWorkerTests.swift */,
 				8FABE46A237EED3100B94AB5 /* ListStoresPresenterTests.swift */,
 			);
 			path = ListStores;
@@ -385,6 +390,7 @@
 				8FABE461237EEB3A00B94AB5 /* ListStoresWorker.swift in Sources */,
 				8FABE424237E7F0900B94AB5 /* ViewController.swift in Sources */,
 				8F1E2FCD2382C0DA0092BB76 /* ListStoreProductsPresenter.swift in Sources */,
+				8F1E2FDE2382E00D0092BB76 /* ListStoreProductCell.swift in Sources */,
 				8FABE47D237FDD4800B94AB5 /* Store.swift in Sources */,
 				8FABE457237E849200B94AB5 /* WelcomeViewController.swift in Sources */,
 				8FABE460237EEB3A00B94AB5 /* ListStoresPresenter.swift in Sources */,
@@ -425,8 +431,6 @@
 				8F1E2FD92382C0F70092BB76 /* ListStoreProductsInteractorTests.swift in Sources */,
 				8FABE437237E7F0B00B94AB5 /* zmaniAppTests.swift in Sources */,
 				8FABE46E237EED3100B94AB5 /* ListStoresPresenterTests.swift in Sources */,
-				8FABE46D237EED3100B94AB5 /* ListStoresWorkerTests.swift in Sources */,
-				8F1E2FDA2382C0F70092BB76 /* ListStoreProductsWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

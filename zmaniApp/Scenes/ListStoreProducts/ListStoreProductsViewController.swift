@@ -19,9 +19,11 @@ protocol ListStoreProductsDisplayLogic: class
 
 class ListStoreProductsViewController: UIViewController, ListStoreProductsDisplayLogic
 {
+    @IBOutlet var tableView: UITableView!
+    
     var interactor: ListStoreProductsBusinessLogic?
     var router: (NSObjectProtocol & ListStoreProductsRoutingLogic & ListStoreProductsDataPassing)?
-    
+    var fetchedProducts: [ListStoreProducts.FetchStoreProducts.ViewModel.DisplayedStoreProduct]?
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -69,6 +71,8 @@ class ListStoreProductsViewController: UIViewController, ListStoreProductsDispla
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
         fetchStoreProducts(forStore: "zara")
     }
     
@@ -86,5 +90,27 @@ class ListStoreProductsViewController: UIViewController, ListStoreProductsDispla
     func displayProducts(viewModel: ListStoreProducts.FetchStoreProducts.ViewModel)
     {
         //nameTextField.text = viewModel.name
+        fetchedProducts = viewModel.displayedStoreProducts
+        tableView.reloadData()
     }
+}
+
+extension ListStoreProductsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.fetchedProducts?.count ?? 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListStoreProductsCell") as! ListStoreProductCell
+        return cell
+    }
+    
+}
+
+extension ListStoreProductsViewController: UITableViewDelegate {
+    
 }
