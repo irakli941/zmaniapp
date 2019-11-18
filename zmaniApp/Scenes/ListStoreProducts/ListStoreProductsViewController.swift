@@ -71,9 +71,17 @@ class ListStoreProductsViewController: UIViewController, ListStoreProductsDispla
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        configureTableView()
+        fetchStoreProducts(forStore: "zara")
+    }
+    
+    private func configureTableView()
+    {
         tableView.dataSource = self
         tableView.delegate = self
-        fetchStoreProducts(forStore: "zara")
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        
     }
     
     func fetchStoreProducts(forStore store:String)
